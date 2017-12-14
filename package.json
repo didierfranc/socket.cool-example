@@ -1,0 +1,23 @@
+{
+  "name": "socket.cool-example",
+  "version": "1.0.0",
+  "description": "Sample application using socket.cool",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/didierfranc/socket.cool-example.git"
+  },
+  "keywords": ["node", "socket"],
+  "author": "Didier Franc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/didierfranc/socket.cool-example/issues"
+  },
+  "homepage": "https://github.com/didierfranc/socket.cool-example#readme",
+  "dependencies": {
+    "uuid": "^3.1.0"
+  }
+}

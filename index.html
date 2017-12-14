@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>socket.cool</title>
+  </head>
+  <body>
+    <ul>
+    </ul>
+    <form name="message">
+      <input type="text" name="text"/>
+      <button>send</button>
+    </form>
+    <script type="text/javascript">
+      // display a list of message
+      const display = messages => {
+        document.querySelector('ul').innerHTML = messages.reduce(
+          (r, v) => r + '<li>' + decodeURIComponent(v) + '</li>',
+          '',
+        )
+      }
+
+      // fancy error message
+      const sad = () => console.log('😔')
+
+      // get messages from api
+      const getMessage = () => {
+        fetch('/messages/list')
+          .then(e => e.json())
+          .then(display)
+          .catch(sad)
+      }
+
+      getMessage()
+
+      // post message
+      const form = document.forms.message
+
+      form.onsubmit = e => {
+        e.preventDefault()
+        fetch('/messages/post/' + encodeURIComponent(form.text.value))
+          .then(e => e.json())
+          .then(display)
+          .catch(sad)
+      }
+    </script>
+  </body>
+</html>
