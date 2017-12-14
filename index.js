@@ -1,4 +1,5 @@
 const { createServer } = require('http')
+const { get } = require('https')
 const { parse } = require('url')
 const { readFileSync } = require('fs')
 const { v4 } = require('uuid')
@@ -22,6 +23,10 @@ const server = createServer((req, res) => {
 
   if (post) {
     messages.push(post[1])
+    get('https://app.socket.cool/notify/1/1', res => {
+      const { statusCode } = res
+      if (statusCode === 200) console.log('🚀')
+    })
     res.end(JSON.stringify(messages))
   } else if (list) {
     res.end(JSON.stringify(messages))

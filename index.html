@@ -43,6 +43,10 @@
           .then(display)
           .catch(sad)
       }
+
+      // websocket
+      const ws = new WebSocket('wss://app.socket.cool/appid/channelid/uuid')
+      ws.onmessage = getMessage
     </script>
   </body>
 </html>
